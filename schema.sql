@@ -11,10 +11,9 @@ DROP TABLE IF EXISTS apps;
 CREATE TABLE users (
   id int PRIMARY KEY AUTO_INCREMENT,
   full_name varchar(255) NOT NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   email varchar(255) NOT NULL,
-  post_id int,
-  comment_id int
+  `password` varchar(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE workspaces (
@@ -33,23 +32,23 @@ CREATE TABLE channels (
 
 CREATE TABLE posts (
   posts_id int PRIMARY KEY AUTO_INCREMENT,
-  user_id int NOT NULL,
-  channel_id int NOT NULL,
+  user_id int,
+  channel_id int,
   post_text text,
   image_link varchar(255),
   post_time timestamp NOT NULL DEFAULT NOW(),
-  FOREIGN KEY (channel_id) REFERENCES channels(posts_id),
-  FOREIGN KEY (user_id) REFERENCES users(post_id)
+  FOREIGN KEY (channel_id) REFERENCES channels(channel_id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE comments (
   comment_id int PRIMARY KEY AUTO_INCREMENT,
-  user_id int NOT NULL,
-  post_id int NOT NULL,
+  user_id int,
+  post_id int,
   comment_text text,
-  comment_time timestamp NOT NULL DEFAULT NOT(),
+  comment_time timestamp NOT NULL DEFAULT NOW(),
   FOREIGN KEY (post_id) REFERENCES posts(posts_id),
-  FOREIGN KEY (user_id) REFERENCES users(comment_id)
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE direct_messages (

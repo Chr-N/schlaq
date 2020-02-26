@@ -13,9 +13,7 @@ CREATE TABLE users (
   full_name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-  post_id int,
-  comment_id int
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE workspaces (
