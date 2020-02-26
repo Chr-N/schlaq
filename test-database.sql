@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS workspaces;
-DROP TABLE IF EXISTS channels;
-DROP TABLE IF EXISTS posts;
-DROP TABLE IF EXISTS comments;
-DROP TABLE IF EXISTS direct_messages;
 DROP TABLE IF EXISTS apps;
+DROP TABLE IF EXISTS direct_messages;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS channels;
+DROP TABLE IF EXISTS workspaces;
+DROP TABLE IF EXISTS users;
 
 
 
@@ -63,11 +63,24 @@ CREATE TABLE apps (
   FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
 );
 
---ALTER TABLE workspaces ADD FOREIGN KEY (user_id) REFERENCES users(id);
---ALTER TABLE channels ADD FOREIGN KEY (workspace_id) REFERENCES workspaces (workspace_id);
---ALTER TABLE posts ADD FOREIGN KEY (channel_id) REFERENCES channels (posts_id);
---ALTER TABLE comments ADD FOREIGN KEY (post_id) REFERENCES posts (posts_id);
---ALTER TABLE direct_messages ADD FOREIGN KEY (workspace_id) REFERENCES workspaces (workspace_id);
---ALTER TABLE apps ADD FOREIGN KEY (workspace_id) REFERENCES workspaces (workspace_id);
---ALTER TABLE posts ADD FOREIGN KEY (user_id) REFERENCES users (post_id);
---ALTER TABLE comments ADD FOREIGN KEY (user_id) REFERENCES users (comment_id);
+
+INSERT INTO users (full_name, email, password)
+VALUES
+('user1', 'email1', 'pass'),
+('user2', 'email2', 'pass'),
+('user3', 'email3', 'pass'),
+('user4', 'email4', 'pass'),
+('user5', 'email5', 'pass');
+
+INSERT INTO workspaces (user_id, channel_id)
+VALUES
+(1, 1);
+
+INSERT INTO channels (workspace_id, posts_id)
+VALUES
+(1, 1);
+
+INSERT INTO posts (user_id, channel_id, post_text, image_link)
+VALUES
+(1, 1, 'hello world!', 'https://www.dailydot.com/wp-content/uploads/2018/10/olli-the-polite-cat.jpg'),
+(2, 1, 'memes', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/womanyellingcat-1573233850.jpg?resize=480:*');
