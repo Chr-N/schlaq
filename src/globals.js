@@ -1,6 +1,11 @@
-exports.port = 3000
+exports.port = 5000
+exports.viewsDir =  `${__dirname}/views`
 
-exports.map = {
-  '/': `<p>Hello</p><a href='/test'>/test</a>`,
-  '/test': `<p>Sam</p><a href='/'>Go back</a>`
+exports.engineOpts = {
+  babel: { presets: [ '@babel/preset-env', '@babel/preset-react' ] }
+}
+
+exports.props = {
+  title: 'Schlack',
+  msg: 'the quick brown fox jumped over the lazy dog'
 }

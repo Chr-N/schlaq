@@ -1,8 +1,14 @@
-const Koa = require('koa')
-const { port, map } = require('./globals')
+const express = require('express')
+const reactViews = require('express-react-views')
+const { port, viewsDir, engineOpts, props } = require('./globals')
 const { messages } = require('./db/db')
-const server = new Koa()
 
-server.use( (ctx) => ctx.body = map[ctx.path] )
+const server = express()
+
+server.set( 'views', viewsDir )
+server.set( 'view engine', 'jsx' )
+server.engine( 'jsx', reactViews.createEngine( engineOpts ) )
+
+server.get( '/', (req,res) => res.render( 'App', {...props, name: 'bob'} ) )
 
 server.listen( port, () => console.log( `\nServer is live at http://localhost:${port}` ) )
