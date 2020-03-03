@@ -1,6 +1,4 @@
 # Schlack | Team 🦔
-
-## Proposal
 Schlack is better than Slack
 
 ## Instructions
