@@ -10,5 +10,6 @@ server.set( 'view engine', 'jsx' )
 server.engine( 'jsx', reactViews.createEngine( engineOpts ) )
 
 server.get( '/', (req,res) => res.render( 'App', {...props, name: 'bob'} ) )
+server.get( '/messages', (req,res) => res.render( 'App', {...props, messages } ) )
 
 server.listen( port, () => console.log( `\nServer is live at http://localhost:${port}` ) )
