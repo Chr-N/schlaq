@@ -3,6 +3,7 @@ dependencies:
   express-react-views: 0.11.0_react-dom@16.13.0+react@16.13.0
   react: 16.13.0
   react-dom: 16.13.0_react@16.13.0
+  styled-jsx: 3.2.4_react@16.13.0
 devDependencies:
   '@babel/preset-env': 7.8.6
   '@babel/preset-react': 7.8.3
@@ -1460,10 +1461,34 @@ packages:
       object.assign: 4.1.0
     resolution:
       integrity: sha512-o6qFkpeQEBxcqt0XYlWzAVxNCSCZdUgcR8IRlhD/8DylxjjO4foPcvTW0GGKa/cVt3rvxZ7o5ippJ+/0nvLhlQ==
+  /babel-plugin-syntax-jsx/6.18.0:
+    dev: false
+    resolution:
+      integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
+  /babel-runtime/6.26.0:
+    dependencies:
+      core-js: 2.6.11
+      regenerator-runtime: 0.11.1
+    dev: false
+    resolution:
+      integrity: sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  /babel-types/6.26.0:
+    dependencies:
+      babel-runtime: 6.26.0
+      esutils: 2.0.3
+      lodash: 4.17.15
+      to-fast-properties: 1.0.3
+    dev: false
+    resolution:
+      integrity: sha1-o7Bz+Uq0nrb6Vc1lInozQ4BjJJc=
   /balanced-match/1.0.0:
     dev: false
     resolution:
       integrity: sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
+  /big.js/5.2.2:
+    dev: false
+    resolution:
+      integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
   /body-parser/1.19.0:
     dependencies:
       bytes: 3.1.0
@@ -1596,6 +1621,12 @@ packages:
       semver: 7.0.0
     resolution:
       integrity: sha512-zAa3IZPvsJ0slViBQ2z+vgyyTuhd3MFn1rBQjZSKVEgB0UMYhUkCj9jJUVPgGTGqWvsBVmfnruXgTcNyTlEiSA==
+  /core-js/2.6.11:
+    deprecated: 'core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.'
+    dev: false
+    requiresBuild: true
+    resolution:
+      integrity: sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
   /currently-unhandled/0.4.1:
     dependencies:
       array-find-index: 1.0.2
@@ -1673,6 +1704,12 @@ packages:
   /electron-to-chromium/1.3.366:
     resolution:
       integrity: sha512-MWtwlJaX/MqAH4V7j4pFasq2O4OIH7MltGTEVvzyeuUW+CPYsx+fuVg/MSBrTL4PzZjHidOixaELNy75/XFK1g==
+  /emojis-list/2.1.0:
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -1994,6 +2031,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
+  /json5/1.0.1:
+    dependencies:
+      minimist: 1.2.0
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==
   /json5/2.1.1:
     dependencies:
       minimist: 1.2.0
@@ -2027,6 +2071,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-lWkFcI1YtLq0wiYbBPWfMcmTdMA=
+  /loader-utils/1.2.3:
+    dependencies:
+      big.js: 5.2.2
+      emojis-list: 2.1.0
+      json5: 1.0.1
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-fkpz8ejdnEMG3s37wGL07iSBDg99O9D5yflE9RGNH3hRdx9SOwYfnGYdZOUIZitN8E+E2vkq3MUMYMvPYl5ZZA==
   /locate-path/3.0.0:
     dependencies:
       p-locate: 3.0.0
@@ -2508,6 +2562,10 @@ packages:
   /regenerate/1.4.0:
     resolution:
       integrity: sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
+  /regenerator-runtime/0.11.1:
+    dev: false
+    resolution:
+      integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
   /regenerator-transform/0.14.1:
     dependencies:
       private: 0.1.8
@@ -2639,6 +2697,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+  /source-map/0.7.3:
+    dev: false
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
   /spdx-correct/3.1.0:
     dependencies:
       spdx-expression-parse: 3.0.0
@@ -2667,6 +2731,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+  /string-hash/1.1.3:
+    dev: false
+    resolution:
+      integrity: sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=
   /strip-bom/2.0.0:
     dependencies:
       is-utf8: 0.2.1
@@ -2684,6 +2752,34 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-DHlipq3vp7vUrDZkYKY4VSrhoKI=
+  /styled-jsx/3.2.4_react@16.13.0:
+    dependencies:
+      babel-plugin-syntax-jsx: 6.18.0
+      babel-types: 6.26.0
+      convert-source-map: 1.7.0
+      loader-utils: 1.2.3
+      react: 16.13.0
+      source-map: 0.7.3
+      string-hash: 1.1.3
+      stylis: 3.5.4
+      stylis-rule-sheet: 0.0.10_stylis@3.5.4
+    dev: false
+    peerDependencies:
+      react: 15.x.x || 16.x.x
+    resolution:
+      integrity: sha512-UMclQzI1lss38RhyjTf7SmtXJEMbB6Q9slDz8adGtzHjirYb1PPgeWLSP8SlZc8c9f3LF6axmtv+6K/553ANdg==
+  /stylis-rule-sheet/0.0.10_stylis@3.5.4:
+    dependencies:
+      stylis: 3.5.4
+    dev: false
+    peerDependencies:
+      stylis: ^3.5.0
+    resolution:
+      integrity: sha512-nTbZoaqoBnmK+ptANthb10ZRZOGC+EmTLLUxeYIuHNkEKcmKgXX1XWKkUBT2Ac4es3NybooPe0SmvKdhKJZAuw==
+  /stylis/3.5.4:
+    dev: false
+    resolution:
+      integrity: sha512-8/3pSmthWM7lsPBKv7NXkzn2Uc9W7NotcwGNpJaa3k7WMM1XDCA4MgT5k/8BIexd5ydZdboXtU90XH9Ec4Bv/Q==
   /supports-color/5.5.0:
     dependencies:
       has-flag: 3.0.0
@@ -2691,6 +2787,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
+  /to-fast-properties/1.0.3:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-uDVx+k2MJbguIxsG46MFXeTKGkc=
   /to-fast-properties/2.0.0:
     engines:
       node: '>=4'
@@ -2794,3 +2896,4 @@ specifiers:
   node-dev: ^4.0.0
   react: ^16.13.0
   react-dom: ^16.13.0
+  styled-jsx: ^3.2.4
