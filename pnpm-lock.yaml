@@ -12,7 +12,7 @@ lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.8.3:
     dependencies:
-      '@babel/highlight': 7.8.3
+      '@babel/highlight': 7.9.0
     resolution:
       integrity: sha512-a9gxpmdXtZEInkCSHUJDLHZVBgb1QS0jhss4cPP93EW7s+uC5bikET2twEF3KV+7rDblJcmNvTR7VJejqd2C2g==
   /@babel/compat-data/7.8.6:
@@ -63,7 +63,7 @@ packages:
       integrity: sha512-4bpOR5ZBz+wWcMeVtcf7FbjcFzCp+817z2/gHNncIRcM9MmKzUhtWCYAq27RAfUrAFwb+OCG1s9WEaVxfi6cjg==
   /@babel/helper-annotate-as-pure/7.8.3:
     dependencies:
-      '@babel/types': 7.8.6
+      '@babel/types': 7.9.0
     resolution:
       integrity: sha512-6o+mJrZBxOoEX77Ezv9zwW7WV8DdluouRKNY/IR5u/YTMuKHgugHOzYWlYvYLpLA9nPsQCAAASpCIbjI9Mv+Uw==
   /@babel/helper-builder-binary-assignment-operator-visitor/7.8.3:
@@ -272,13 +272,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-VPbe7wcQ4chu4TDQjimHv/5tj73qz88o12EPkO2ValS2QiQS/1F2SsjyIGNnAD0vF/nZS6Cf9i+vW6HIlnaR8w==
-  /@babel/highlight/7.8.3:
+  /@babel/highlight/7.9.0:
     dependencies:
+      '@babel/helper-validator-identifier': 7.9.0
       chalk: 2.4.2
-      esutils: 2.0.3
       js-tokens: 4.0.0
     resolution:
-      integrity: sha512-PX4y5xQUvy0fnEVHrYOarRPXVWafSjTW9T0Hab8gVIawpl2Sj0ORyrygANq+KjcNlSSTw0YCLSNA8OyZ1I4yEg==
+      integrity: sha512-lJZPilxX7Op3Nv/2cvFdnlepPXDxi29wxteT57Q965oc5R9v86ztx0jfxVrTcBk8C2kcPkkDa2Z4T3ZsPPVWsQ==
   /@babel/parser/7.8.6:
     engines:
       node: '>=6.0.0'
