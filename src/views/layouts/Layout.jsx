@@ -1,19 +1,18 @@
 import React from 'react'
-import flushStyles from 'styled-jsx/server'
+import { css } from '@emotion/core'
+import { colours as c } from '../styles/theme'
 
 export default ({ title, children }) => {
   return (
     <>
-    <style jsx global>{`
-      body {
-        display: grid;
-        justify-content: center;
-      }
-    `}</style>
-
     <html>
-      <head><title>{title}</title>{flushStyles()}</head>
-      <body>{children}</body>
+      <head>
+        <title>{title}</title>
+        <link rel='stylesheet' href='tw/base.min.css' />
+      </head>
+      <body css={css`color:${c.fgTxt};`}>
+        {children}
+      </body>
     </html>
     </>
   )
