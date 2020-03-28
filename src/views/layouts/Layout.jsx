@@ -8,8 +8,8 @@ export default ({ title, children }) => {
     <html>
       <head>
         <title>{title}</title>
-        <link rel='stylesheet' href='tw/base.min.css'/>
-        <link rel='shortcut icon' href='favicon.svg' type='image/x-icon'/>
+        <link rel='stylesheet' href='tw/base.min.css' />
+        <link rel='shortcut icon' href='favicon.svg' type='image/svg+xml' />
       </head>
       <body css={css`color:${c.fgTxt};`}>
         {children}
