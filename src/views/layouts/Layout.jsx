@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { colours as c } from '../styles/theme'
+import theme from '../theme/theme'
 
 export default ({ title, children }) => (
   <html>
@@ -9,7 +9,7 @@ export default ({ title, children }) => (
       <link rel='stylesheet' href='tw/base.min.css' />
       <link rel='shortcut icon' href='favicon.svg' type='image/svg+xml' />
     </head>
-    <body css={css`color:${c.fgTxt};`}>
+    <body css={css`color:${theme.txt};`}>
       {children}
     </body>
   </html>
