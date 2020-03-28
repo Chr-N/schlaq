@@ -14,9 +14,20 @@ exports.engineOpts = {
         '@babel/preset-react', {
           useSpread: true
         }
+      ],
+      [
+        '@emotion/babel-preset-css-prop', {
+          sourceMap: false,
+          autoLabel: true,
+          cssPropOptimization: true
+        }
       ]
     ],
-    plugins: [ [ 'styled-jsx/babel', { optimizeForSpeed: true } ] ]
+    plugins: [
+      'babel-plugin-macros',
+      // '@babel/plugin-transform-react-jsx',
+      // [ 'babel-plugin-inline-import', { extensions: ['.css'] } ]
+    ]
   }
 }
 
