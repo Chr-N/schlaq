@@ -22,12 +22,12 @@ exports.engineOpts = {
           cssPropOptimization: true
         }
       ]
-    ],
+    ]/* ,
     plugins: [
       'babel-plugin-macros',
       // '@babel/plugin-transform-react-jsx',
       // [ 'babel-plugin-inline-import', { extensions: ['.css'] } ]
-    ]
+    ] */
   }
 }
 
