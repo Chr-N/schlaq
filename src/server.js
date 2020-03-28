@@ -5,6 +5,7 @@ const { messages } = require('./db/db')
 
 const server = express()
 
+server.use( express.static( 'public' ) )
 server.set( 'views', viewsDir )
 server.set( 'view engine', 'jsx' )
 server.engine( 'jsx', reactViews.createEngine( engineOpts ) )
