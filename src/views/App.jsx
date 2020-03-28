@@ -11,7 +11,7 @@ export default ({ title, msg, name, messages }) => {
   const sidebar = css`grid-area:sidebar;background-color:${c.sidebar};text-indent:1rem;color:${c.secFgTxt};`
   const hover = css`&:hover{cursor:pointer;background-color:${c.hover};}`
   const focus = css`&:focus{background-color:${c.highlight};}`;
-  const selectable = css`padding:0;line-height:1.8rem;font-size:0.9rem;background-color:transparent;color:${c.secFgTxt};border:none;outline:none;text-align:start;padding-left:1.5rem;${hover}${focus}`;
+  const selectable = css`padding:0;line-height:1.8rem;font-size:0.9rem;background-color:transparent;color:${c.secFgTxt};border:none;outline:none;text-align:start;padding-left:1.5rem;${hover};${focus}`;
   const main = css`grid-area:main;background-color:${c.bg};`
 
   return (
