@@ -1,6 +1,7 @@
 dependencies:
   '@emotion/core': 10.0.28_react@16.13.1
   '@emotion/styled': 10.0.27_c989b1aa057905c7a8b69bf973f55a19
+  emotion-theming: 10.0.27_c989b1aa057905c7a8b69bf973f55a19
   express: 4.17.1
   express-react-views: 0.11.0_react-dom@16.13.1+react@16.13.1
   react: 16.13.1
@@ -2078,6 +2079,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-/FNHDmNmI4IR/qY+uuAVq8OET5S9J7d5QfQUnAz0edkhl02BjtOflF2H0RXKapVtJfMgaFthKBzeYJAzOaW8PA==
+  /emotion-theming/10.0.27_c989b1aa057905c7a8b69bf973f55a19:
+    dependencies:
+      '@babel/runtime': 7.9.2
+      '@emotion/core': 10.0.28_react@16.13.1
+      '@emotion/weak-memoize': 0.2.5
+      hoist-non-react-statics: 3.3.2
+      react: 16.13.1
+    dev: false
+    peerDependencies:
+      '@emotion/core': ^10.0.27
+      react: '>=16.3.0'
+    resolution:
+      integrity: sha512-MlF1yu/gYh8u+sLUqA0YuA9JX0P4Hb69WlKc/9OLo+WCXuX6sy/KoIa+qJimgmr2dWqnypYKYPX37esjDBbhdw==
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -2294,6 +2308,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-PLcsoqu++dmEIZB+6totNFKq/7Do+Z0u4oT0zKOJNl3lYK6vGwwu2hjHs+68OEZbTjiUE9bgOABXbP/GvrS0Kg==
+  /hoist-non-react-statics/3.3.2:
+    dependencies:
+      react-is: 16.13.1
+    dev: false
+    resolution:
+      integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
   /hosted-git-info/2.8.8:
     dev: true
     resolution:
@@ -3039,6 +3059,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
+  /react-is/16.13.1:
+    dev: false
+    resolution:
+      integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
   /react/16.13.1:
     dependencies:
       loose-envify: 1.4.0
@@ -3474,6 +3498,7 @@ specifiers:
   '@emotion/styled': ^10.0.27
   babel-plugin-inline-import: ^3.0.0
   babel-plugin-macros: ^2.8.0
+  emotion-theming: ^10.0.27
   express: ^4.17.1
   express-react-views: ^0.11.0
   node-dev: ^4.0.0
