@@ -14,7 +14,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "emotion-theming": "^10.0.27",
     "express": "^4.17.1",
     "express-react-views": "^0.11.0",
     "react": "^16.13.1",
