@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS direct_messages;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS channels;
+DROP TABLE IF EXISTS user_workspaces;
 DROP TABLE IF EXISTS workspaces;
 DROP TABLE IF EXISTS users;
 
@@ -10,7 +11,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id int PRIMARY KEY AUTO_INCREMENT,
-  full_name varchar(255) NOT NULL,
+  user_name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
@@ -18,9 +19,15 @@ CREATE TABLE users (
 
 CREATE TABLE workspaces (
   workspace_id int PRIMARY KEY AUTO_INCREMENT,
-  user_id int NOT NULL,
-  channel_id int NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  channel_id int NOT NULL
+);
+
+CREATE TABLE user_workspaces (
+  id              INT PRIMARY KEY AUTO_INCREMENT,
+  user_id         INT,
+  workspace_id    INT,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
 );
 
 CREATE TABLE channels (
