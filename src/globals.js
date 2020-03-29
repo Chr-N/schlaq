@@ -32,6 +32,5 @@ exports.engineOpts = {
 }
 
 exports.props = {
-  title: 'Schlaq',
-  defaultScope: 'general'
+  title: 'Schlaq'
 }
