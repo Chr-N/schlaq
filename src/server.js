@@ -1,8 +1,9 @@
 const express = require('express')
 const reactViews = require('express-react-views')
 const { port, viewsDir, engineOpts } = require('./globals')
-const { title } = require('./globals').props
+const { title, defaultScope } = require('./globals').props
 const { starred, channels, dms, messages } = require('./db/db')
+const starredArr = starred.map( ({ starred }) => starred )
 
 const server = express()
 
@@ -17,7 +18,8 @@ server.get( '/', (req,res) => res.render( 'App', {
   channels,
   dms,
   messages,
-  scope: 'Bob'
+  scope: defaultScope,
+  scopeStarred: starredArr.includes( defaultScope )
 }))
 
 server.get( '/:scope', (req,res) => res.render( 'App', {
@@ -27,7 +29,7 @@ server.get( '/:scope', (req,res) => res.render( 'App', {
   dms,
   messages,
   scope: req.params.scope,
-  scopeStarred: starred.map( ({ starred }) => starred ).includes( req.params.scope )
+  scopeStarred: starredArr.includes( req.params.scope )
 }))
 
 
