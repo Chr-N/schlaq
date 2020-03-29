@@ -1,0 +1,96 @@
+const express = require('express')
+const router = express.Router()
+const db = require('../sql/mysql-interface')
+const resources = null //'../sql/resources' //load whatever resources from resources
+
+
+const databaseName = "slack_clone"
+
+
+
+
+router.get('/test', async (req,res) => {
+    try {
+        await db.createConnection()
+        const result = await db.showTables()
+        console.log(result)
+        let tables = ""
+        for (obj of result) {
+            tables = `${tables} ${Object.values(obj)}`
+        }
+        res.send(`test endpoint works for database. Tables: ${tables}`)
+    } catch (error) {
+        console.log(error)
+    } finally {
+        db.closeConnection()
+    }
+})
+
+/**
+ * note that the database functions themselves return promises
+ * except for db.createDatabase(), none of them open the connection or close the connection themselves... you must do that here
+ */
+router.get('/createDB', async (req, res, next) => {
+    try {
+        await db.createDatabase(databaseName)
+    } catch (error) {
+        throw error
+    } finally {
+        res.send("finished. check logs")
+        await db.closeConnection()
+    }
+})
+
+router.get('/reset/resetDatabase', async (req, res, next) => {
+    try {
+        await db.createConnection()
+        //takes path to directory of resources, do not enter filenames
+        const result = await db.resetDatabase(resources)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+router.get('/reset/resetToTestEnvironment', async (req, res, next) => {
+    try {
+        await db.createConnection()
+        //takes path to directory of resources, do not enter filenames
+        await db.resetDatabase(resources)
+
+        await db.createUser("timothy", "timothy@test.com", "some_hash")
+        await db.createUser("chris", "chris@admin.com", "some_hash")
+        await db.createUser("justin", "justin@admin.com", "some_hash")
+
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+        res.send('test environment up')
+    }
+})
+
+
+router.get('/getUsers', async (req, res, next) => {
+    //access by passing in querystring like: 'http://localhost:3000/database/getUsers/?selectBy=foo&searchBy=bar'
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = await db.getUsers(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+module.exports = router
