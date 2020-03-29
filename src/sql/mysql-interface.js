@@ -2,7 +2,7 @@
 
 const mysql = require('mysql')
 
-const default_hostAddress = "192.168.55.10"
+const default_hostAddress = "192.168.55.10" //if you are Sam Meech-Ward, change this to "192.168.55.20"
 const default_mySQLUser = "root"
 const default_mySQLPassword = "root"
 const default_databaseName = 'slack_clone'
@@ -35,7 +35,7 @@ const createConnection = (hostAddress = default_hostAddress, port = default_port
             'port': port,
             user: mySQLUser,
             password: mySQLPassword,
-            multipleStatements: true, //this is false by default... to prevent SQL injection
+            //multipleStatements: true, //this is false by default... to prevent SQL injection
             database: databaseName //normal default is undefined. Pass in undefined to create a new database in mysql.
         })
     
@@ -514,6 +514,12 @@ const createComment = (user_id, post_id, comment_text) => {
  */
 
  //to be implemented
+
+
+
+
+
+ 
 // async function test() {
 //     try {
 //         await createConnection()

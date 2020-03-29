@@ -93,4 +93,112 @@ router.get('/getUsers', async (req, res, next) => {
     }
 })
 
+router.get('/getWorkspaces', async (req, res, next) => {
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = await db.getWorkspaces(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+router.get('/getUserWorkspaces', async (req, res, next) => {
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = await db.getUserWorkspaces(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+router.get('/getChannels', async (req, res, next) => {
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = await db.getChannels(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+router.get('/getPosts', async (req, res, next) => {
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = await db.getPosts(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+router.get('/getComments', async (req, res, next) => {
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = await db.getComments(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
+router.get('/getDirectMessages', async (req, res, next) => {
+    const selectBy = req.query.selectBy
+    const searchBy = req.query.searchBy
+    console.log(`selectBy: ${selectBy}`)
+    console.log(`searchBy: ${searchBy}`)
+
+    try {
+        await db.createConnection()
+        const result = "direct messages to be implemented" //await db.(selectBy, searchBy)
+        console.log(result)
+        res.send(result)
+    } catch (error) {
+        throw error
+    } finally {
+        await db.closeConnection()
+    }
+})
+
 module.exports = router
