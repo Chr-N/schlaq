@@ -16,9 +16,9 @@ export default ({ scope, starred, channels, dms }) => (
     <div css={css`padding: 0.5rem 0;`}>
       <span>Starred</span>
       <div css={css`display:grid;padding-top:0.5rem;`}>
-        {starred.map(({starred},i) => 
+        {starred.map(({starred,type},i) => 
           <Scope
-            type={'user'}
+            type={type}
             scope={starred}
             currScope={starred === scope}
             key={i}
