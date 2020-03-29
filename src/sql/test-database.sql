@@ -19,29 +19,31 @@ CREATE TABLE users (
 
 CREATE TABLE workspaces (
   workspace_id int PRIMARY KEY AUTO_INCREMENT,
+  workspace_name VARCHAR(255) NOT NULL,
   channel_id int NOT NULL
 );
 
 CREATE TABLE user_workspaces (
   id              INT PRIMARY KEY AUTO_INCREMENT,
-  user_id         INT,
-  workspace_id    INT,
+  user_id         INT NOT NULL,
+  workspace_id    INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
 );
 
 CREATE TABLE channels (
   channel_id int PRIMARY KEY AUTO_INCREMENT,
+  channel_name VARCHAR(255) NOT NULL,
   workspace_id int NOT NULL,
-  posts_id int NOT NULL,
+  posts_id int,
   FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
 );
 
 CREATE TABLE posts (
   posts_id int PRIMARY KEY AUTO_INCREMENT,
-  user_id int,
-  channel_id int,
-  post_text text,
+  user_id int NOT NULL,
+  channel_id int NOT NULL,
+  post_text text NOT NULL,
   image_link varchar(255),
   post_time timestamp NOT NULL DEFAULT NOW(),
   FOREIGN KEY (channel_id) REFERENCES channels(channel_id),

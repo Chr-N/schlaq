@@ -2,8 +2,6 @@
 
 const mysql = require('mysql')
 
-const herokuJawsDBURL = process.env.JAWSDB_URL;
-
 const default_hostAddress = "192.168.55.10"
 const default_mySQLUser = "root"
 const default_mySQLPassword = "root"
@@ -216,4 +214,196 @@ const getWorkspaces = (selectBy = '*', searchBy = '') => {
             resolve(rawDataPacketConverter(result))
         })
     })
+}
+
+//channel_id should always be null to start 
+const createWorkspace = (workspace_name, channel_id = null) => {
+    return new Promise((resolve, reject) => {
+        const table = 'workspaces'
+        const sql = `INSERT INTO ${table} (workspace_name, channel_id) VALUES (?, ?)`
+        const params = [workspace_name, channel_id]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem creating workspace and inserting into ${table}.`)
+                reject(error)
+            }
+            console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+
+/**
+ * user_workspaces many-to-many join table
+ */
+const getUserWorkspaces = (selectBy = '*', searchBy = '') => {
+    return new Promise((resolve, reject) => {
+        const table = 'user_workspaces'
+        const sql = `SELECT ${selectBy} FROM ${table} ${searchBy}`
+        db.query(sql, (error, result) => {
+            if (error) {
+                console.log(`Problem searching for ${table} by ${searchBy}.`)
+                reject(error)
+            }
+            //console.log(rawDataPacketConverter(result))
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+//when user clicks join workspace, create user_workspace row
+const createUserWorkspace = (user_id, workspace_id) => {
+    return new Promise((resolve, reject) => {
+        const table = 'user_workspaces'
+        const sql = `INSERT INTO ${table} (user_id, workspace_id) VALUES (?, ?)`
+        const params = [user_id, workspace_id]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem creating user_workspace and inserting into ${table}.`)
+                reject(error)
+            }
+            console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+
+/**
+ * channels
+ * workspaces have many channels
+ * channels have many posts
+ */
+const getChannels = (selectBy = '*', searchBy = '') => {
+    return new Promise((resolve, reject) => {
+        const table = 'channels'
+        const sql = `SELECT ${selectBy} FROM ${table} ${searchBy}`
+        db.query(sql, (error, result) => {
+            if (error) {
+                console.log(`Problem searching for ${table} by ${searchBy}.`)
+                reject(error)
+            }
+            //console.log(rawDataPacketConverter(result))
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+const createChannel = (channel_name, workspace_id, posts_id = null) => {
+    return new Promise((resolve, reject) => {
+        const table = 'channels'
+        const sql = `INSERT INTO ${table} (channel_name, workspace_id, posts_id) VALUES (?, ?, ?)`
+        const params = [channel_name, workspace_id, posts_id]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem creating channel and inserting into ${table}.`)
+                reject(error)
+            }
+            console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+
+/**
+ * posts
+ * posts have many comments
+ */
+const getPosts = (selectBy = '*', searchBy = '') => {
+    return new Promise((resolve, reject) => {
+        const table = 'posts'
+        const sql = `SELECT ${selectBy} FROM ${table} ${searchBy}`
+        db.query(sql, (error, result) => {
+            if (error) {
+                console.log(`Problem searching for ${table} by ${searchBy}.`)
+                reject(error)
+            }
+            //console.log(rawDataPacketConverter(result))
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+/**
+ * 
+ * a user creates a post
+ * a post is created in a channel
+ */
+const createPost = (user_id, channel_id, post_text, image_link = null) => {
+    return new Promise((resolve, reject) => {
+        const table = 'posts'
+        const sql = `INSERT INTO ${table} (user_id, channel_id, post_text, image_link) VALUES (?, ?, ?, ?)`
+        const params = [user_id, channel_id, post_text, image_link]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem creating post and inserting into ${table}.`)
+                reject(error)
+            }
+            console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+/**
+ * comments
+ * 
+ */
+const getComments = (selectBy = '*', searchBy = '') => {
+    return new Promise((resolve, reject) => {
+        const table = 'comments'
+        const sql = `SELECT ${selectBy} FROM ${table} ${searchBy}`
+        db.query(sql, (error, result) => {
+            if (error) {
+                console.log(`Problem searching for ${table} by ${searchBy}.`)
+                reject(error)
+            }
+            //console.log(rawDataPacketConverter(result))
+            resolve(rawDataPacketConverter(result))
+        })
+    }) 
+}
+
+const createComment = (user_id, post_id, comment_text) => {
+    return new Promise((resolve, reject) => {
+        const table = 'comments'
+        const sql = `INSERT INTO ${table} (user_id, post_id, comment_text) VALUES (?, ?, ?)`
+        const params = [user_id, post_id, comment_text]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem creating comment and inserting into ${table}.`)
+                reject(error)
+            }
+            console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+/**
+ * direct messages
+ */
+
+ //to be implemented
+
+ module.exports = {
+    createConnection,
+    closeConnection,
+    createDatabase,
+    resetDatabase,
+    showTables,
+    getUsers,
+    createUser,
+    getWorkspaces,
+    createWorkspace,
+    getUserWorkspaces,
+    createUserWorkspace,
+    getChannels,
+    createChannel,
+    getPosts,
+    createPost,
+    getComments,
+    createComment
 }
