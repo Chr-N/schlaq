@@ -109,6 +109,48 @@ exports.messages = {
       username: 'Sarah',
       profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
     },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
+    {
+      id: '1',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non molestie urna. Suspendisse dolor lacus, suscipit id malesuada et, congue id sem. Praesent ut sollicitudin nisl. Fusce mollis, urna ut feugiat imperdiet, odio orci mollis nunc, quis imperdiet quam urna vel erat. Nam auctor sed nulla vel venenatis. Nullam ac risus ut est scelerisque molestie. Fusce sed euismod lorem, sed tempus neque. Sed dignissim, libero sed faucibus mollis, felis tellus laoreet leo, at pretium nunc libero ut justo. Proin sagittis interdum bibendum. Aenean sit amet neque erat. Nulla quis maximus ligula. Integer egestas feugiat metus, in aliquet sem rutrum consequat.',
+      username: 'Sarah',
+      profilePic: 'https://ca.slack-edge.com/TS07UEB19-USHJ29D2R-g05947c7423d-512'
+    },
   ]
 }
 
