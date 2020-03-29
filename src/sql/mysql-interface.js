@@ -81,6 +81,22 @@ const createDatabase = (databaseName) => {
     })
 }
 
+/*
+ * internal use only
+ */
+const sqlCallback = (sql) => {
+    return new Promise((resolve, reject) => {
+        //const formattedSQL = sql.replace((/  |\r\n|\n|\r/gm),"")
+        db.query(sql, (error, result) => {
+            if (error) {
+                reject(error)
+            } else {
+                resolve(result)
+            }
+        })
+    })
+}
+
 
 /*
  * internal use only
@@ -123,7 +139,7 @@ const dropAndRecreateTables = () => {
                 id int PRIMARY KEY AUTO_INCREMENT,
                 user_name varchar(255) NOT NULL,
                 email varchar(255) NOT NULL,
-                `password` varchar(255) NOT NULL,
+                password_hash varchar(255) NOT NULL,
                 profile_picture_link VARCHAR(255),
                 created_at TIMESTAMP NOT NULL DEFAULT NOW()
               )`)
@@ -215,25 +231,8 @@ const resetDatabase = (resources = null) => {
         dropAndRecreateTables()
         .then((message) => console.log(message))
         // .then(() => {
-        // //'../resources/cities.json'
-        // return readResources(path.join(__dirname, resources, '/cities.json'))//)
-        // })
-        // .then((data) => {
-        //     //console.log(data)
-        //     for (obj of data) {
-        //         //(city_code, city_name)
-        //         createCity(obj['code'], obj['name_translations']['en'])
-        //     }
-        // })
-        // .then(() => {
-        //     return readResources(path.join(__dirname, resources, '/airports.json'))//)
-        // })
-        // .then((data) => {
-        //     //console.log(data)
-        //     for (obj of data) {
-        //         //(airport_code, airport_name, city_code, country_code, time_zone)
-        //         createAirport(obj['code'], obj['name_translations']['en'], obj['city_code'], obj['country_code'], obj['time_zone'])
-        //     }
+        // load resources from './resources/<file name>'
+        // return readResources(path.join(__dirname, resources, '/<file name>'))//)
         // })
         .then(() => {
             resolve("slack database reset")
@@ -515,8 +514,22 @@ const createComment = (user_id, post_id, comment_text) => {
  */
 
  //to be implemented
+// async function test() {
+//     try {
+//         await createConnection()
+//         await resetDatabase()
+    
+//     } catch (error) {
+//         console.log(error)
+//     } finally {
+//         await closeConnection()
+//     }
+// }
+// test()
 
- module.exports = {
+
+
+module.exports = {
     createConnection,
     closeConnection,
     createDatabase,
