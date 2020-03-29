@@ -1,6 +1,7 @@
 exports.starred = [
-  { starred: 'Bob' },
-  { starred: 'Tom' }
+  { starred: 'Bob', type: 'user' },
+  { starred: 'Tom', type: 'user' },
+  { starred: 'general', type: 'channel' }
 ]
 
 exports.channels = [
