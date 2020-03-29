@@ -1,21 +1,4 @@
-const express = require('express')
-const reactViews = require('express-react-views')
-const { port, viewsDir, engineOpts, props } = require('./globals')
-const { messages } = require('./db/db')
-
-const server = express()
-
-server.set( 'views', viewsDir )
-server.set( 'view engine', 'jsx' )
-server.engine( 'jsx', reactViews.createEngine( engineOpts ) )
-
-<<<<<<< HEAD
-server.get( '/', (req,res) => {
-    res.render( 'App', {...props, name: 'bob'} ) 
-})
-=======
-server.get( '/', (req,res) => res.render( 'App', {...props, name: 'bob'} ) )
-server.get( '/messages', (req,res) => res.render( 'App', {...props, messages } ) )
->>>>>>> c02e254d7212436c0fb245b85908aa67d51815a5
+const { port } = require('./globals')
+const server = require('./app')()
 
 server.listen( port, () => console.log( `\nServer is live at http://localhost:${port}` ) )
