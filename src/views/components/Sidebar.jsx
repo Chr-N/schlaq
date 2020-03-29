@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 import theme from '../styles/theme'
 import { outline, scrollbar } from '../styles/styles'
 
-const sidebar = css`grid-area:sidebar;height:96vh;overflow-y:overlay; background-color:${theme.bgSidebar};text-indent:1rem;color:${theme.txtSec};box-shadow:${theme.boxShadow};z-index:1;padding-bottom:5rem;`
+const sidebar = css`grid-area:sidebar;height:96vh;overflow-y:overlay; background-color:${theme.bgSidebar};text-indent:1rem;color:${theme.txtSec};box-shadow:${theme.boxShadow};z-index:1;padding-bottom:2rem;`
 const hover = css`&:hover{cursor:pointer;background-color:${theme.hover};}`
 
 export default ({ scope, starred, channels, dms }) => (
