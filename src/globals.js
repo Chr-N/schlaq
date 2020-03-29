@@ -32,6 +32,5 @@ exports.engineOpts = {
 }
 
 exports.props = {
-  title: 'Schlaq',
-  msg: 'the quick brown fox jumped over the lazy dog'
+  title: 'Schlaq'
 }
