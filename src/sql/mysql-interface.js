@@ -279,11 +279,11 @@ const getUsers = (selectBy = '*', searchBy = '') => {
     })
 }
 
-const createUser = (username, email, password_hash, profile_picture_link = null) => {
+const createUser = (user_name, email, password_hash, profile_picture_link = null) => {
     return new Promise((resolve, reject) => {
         const table = 'users'
-        const sql = `INSERT INTO ${table} (username, email, password_hash, profile_picture_link) VALUES (?, ?, ?, ?)`
-        const params = [username, email, password_hash, profile_picture_link]
+        const sql = `INSERT INTO ${table} (user_name, email, password_hash, profile_picture_link) VALUES (?, ?, ?, ?)`
+        const params = [user_name, email, password_hash, profile_picture_link]
         db.query(sql, params, (error, result) => {
             if (error) {
                 console.log(`Problem creating user and inserting into ${table}.`)
