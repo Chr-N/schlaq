@@ -14,6 +14,7 @@ CREATE TABLE users (
   user_name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  profile_picture_link VARCHAR(255),
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

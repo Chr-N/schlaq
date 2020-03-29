@@ -88,16 +88,115 @@ const createDatabase = (databaseName) => {
  */
 const dropAndRecreateTables = () => {
     return new Promise((resolve, reject) => {
-        sqlCallback('DROP TABLE IF EXISTS list_of_airports')
+        sqlCallback('DROP TABLE IF EXISTS apps')
         .then((result) => {
             console.log(result.message)
-            return sqlCallback('DROP TABLE IF EXISTS user_preferred_destinations')
+            return sqlCallback('DROP TABLE IF EXISTS direct_messages')
         })
         .then((result) => {
             console.log(result.message)
-            return sqlCallback('DROP TABLE IF EXISTS cities')
+            return sqlCallback('DROP TABLE IF EXISTS comments')
         })
-
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback('DROP TABLE IF EXISTS posts;')
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback('DROP TABLE IF EXISTS channels')
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback('DROP TABLE IF EXISTS user_workspaces')
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback('DROP TABLE IF EXISTS workspaces')
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback('DROP TABLE IF EXISTS users')
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE users (
+                id int PRIMARY KEY AUTO_INCREMENT,
+                user_name varchar(255) NOT NULL,
+                email varchar(255) NOT NULL,
+                `password` varchar(255) NOT NULL,
+                profile_picture_link VARCHAR(255),
+                created_at TIMESTAMP NOT NULL DEFAULT NOW()
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE workspaces (
+                workspace_id int PRIMARY KEY AUTO_INCREMENT,
+                workspace_name VARCHAR(255) NOT NULL,
+                channel_id int NOT NULL
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE user_workspaces (
+                id              INT PRIMARY KEY AUTO_INCREMENT,
+                user_id         INT NOT NULL,
+                workspace_id    INT NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES users(id),
+                FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE channels (
+                channel_id int PRIMARY KEY AUTO_INCREMENT,
+                channel_name VARCHAR(255) NOT NULL,
+                workspace_id int NOT NULL,
+                posts_id int,
+                FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE posts (
+                posts_id int PRIMARY KEY AUTO_INCREMENT,
+                user_id int NOT NULL,
+                channel_id int NOT NULL,
+                post_text text NOT NULL,
+                image_link varchar(255),
+                post_time timestamp NOT NULL DEFAULT NOW(),
+                FOREIGN KEY (channel_id) REFERENCES channels(channel_id),
+                FOREIGN KEY (user_id) REFERENCES users(id)
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE comments (
+                comment_id int PRIMARY KEY AUTO_INCREMENT,
+                user_id int,
+                post_id int,
+                comment_text text,
+                comment_time timestamp NOT NULL DEFAULT NOW(),
+                FOREIGN KEY (post_id) REFERENCES posts(posts_id),
+                FOREIGN KEY (user_id) REFERENCES users(id)
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE direct_messages (
+                direct_message_id int PRIMARY KEY AUTO_INCREMENT,
+                workspace_id int NOT NULL,
+                FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
+              )`)
+        })
+        .then((result) => {
+            console.log(result.message)
+            return sqlCallback(`CREATE TABLE apps (
+                app_id int PRIMARY KEY AUTO_INCREMENT,
+                workspace_id int NOT NULL,
+                FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
+              )`)
+        })
         //finally resolve/reject
         .then((result) => {
             resolve(result)
@@ -181,17 +280,46 @@ const getUsers = (selectBy = '*', searchBy = '') => {
     })
 }
 
-const createUser = (username, email, password_hash) => {
+const createUser = (username, email, password_hash, profile_picture_link = null) => {
     return new Promise((resolve, reject) => {
         const table = 'users'
-        const sql = `INSERT INTO ${table} (username, email, password_hash) VALUES (?, ?, ?)`
-        const params = [username, email, password_hash]
+        const sql = `INSERT INTO ${table} (username, email, password_hash, profile_picture_link) VALUES (?, ?, ?, ?)`
+        const params = [username, email, password_hash, profile_picture_link]
         db.query(sql, params, (error, result) => {
             if (error) {
                 console.log(`Problem creating user and inserting into ${table}.`)
                 reject(error)
             }
             console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
+
+const updateUserProfilePicture = (id, email, profile_picture_link) => {
+    return new Promise((resolve, reject) => {
+        const table = 'users'
+        let whereCondtion;
+        let conditionValue;
+        
+        if (id) {
+            whereCondition = 'id'
+            conditionValue = id
+        } else if (email) {
+            whereCondition = 'email'
+            conditionValue = email
+        } else {
+            reject("Invalid parameter. Must pass in either id or email. Pass null first to skip id and update by email")
+        }
+
+        const sql = `UPDATE ${table} SET profile_picture_link = ? WHERE ${whereCondition} = ?`
+        const params = [profile_picture_link]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem updateing ${table}.`)
+                reject(error)
+            }
+            //console.log(result)
             resolve(rawDataPacketConverter(result))
         })
     })
@@ -396,6 +524,7 @@ const createComment = (user_id, post_id, comment_text) => {
     showTables,
     getUsers,
     createUser,
+    updateUserProfilePicture,
     getWorkspaces,
     createWorkspace,
     getUserWorkspaces,
