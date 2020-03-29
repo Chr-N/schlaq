@@ -18,7 +18,7 @@ exports.engineOpts = {
       [
         '@emotion/babel-preset-css-prop', {
           sourceMap: false,
-          autoLabel: true,
+          autoLabel: false,
           cssPropOptimization: true
         }
       ]
