@@ -9,7 +9,7 @@ exports.users = {
 exports.starred = [
   { starred: 'Bob', type: 'user' },
   { starred: 'Tom', type: 'user' },
-  { starred: 'general', type: 'channel' }
+  { starred: 'questions', type: 'channel' }
 ]
 
 exports.channels = [
