@@ -23,7 +23,7 @@ export default ({ scope, scopeStarred, messages }) => (
         <div css={[hoverMessage, css`display:grid;grid-template-columns:2.8rem 1fr;grid-template-rows:1fr max-content;grid-template-areas:'profile-pic username' 'profile-pic message';padding:1rem 1.5rem;`]} key={i} >
           <img css={css`grid-area:profile-pic;border-radius:0.2rem;`} src={profilePic} />
           <div css={css`grid-area:username;text-indent:1rem;font-weight:bold;`}>{username}</div>
-          <div css={css`grid-area:message;padding-left:1rem;width:95%;`}>{message}</div>
+          <div css={css`grid-area:message;padding-left:1rem;font-size:0.95rem;width:100%;`}>{message}</div>
         </div>
       )}
     </div>
