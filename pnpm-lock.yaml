@@ -4126,8 +4126,8 @@ specifiers:
   mysql: ^2.18.1
   node-dev: ^4.0.0
   primus: ^7.3.4
-  react: ^16.13.0
-  react-dom: ^16.13.0
+  react: ^16.13.1
+  react-dom: ^16.13.1
   terser: ^4.6.8
   twin.macro: ^1.0.0-alpha.8
   ws: ^7.2.3
