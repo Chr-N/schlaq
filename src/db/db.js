@@ -1,3 +1,11 @@
+exports.users = {
+  Timothy: [
+    { workspace: 'FSWD', workspacePic: 'https://a.slack-edge.com/80588/img/avatars-teams/ava_0015-44.png' },
+    { workspace: 'Armaan', workspacePic: 'https://a.slack-edge.com/80588/img/avatars-teams/ava_0015-44.png' },
+    { workspace: 'Meech', workspacePic: 'https://a.slack-edge.com/80588/img/avatars-teams/ava_0015-44.png' },
+  ]
+}
+
 exports.starred = [
   { starred: 'Bob', type: 'user' },
   { starred: 'Tom', type: 'user' },
