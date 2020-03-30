@@ -3,6 +3,7 @@ export default {
   bgSidebar: 'rgb(25,23,29)',
   bgHeader: 'rgb(18,16,22)',
   bgInput: 'rgb(34,37,41)',
+  bgPopup: 'rgb(34,37,41)',
 
   txt: 'rgb(209,210,211)',
   txtBright: 'rgb(255,255,255)',
