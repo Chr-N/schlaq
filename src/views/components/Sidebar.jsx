@@ -13,7 +13,7 @@ export default ({ user, workspaceScope, workspaces, scope, starred, channels, dm
   <div css={[sidebar,outline,scrollbar]}>
     <input css={[popup,inputHover,css`width:260px;height:63px;opacity:0;position:fixed;left:0;`]} type='checkbox' />
     <div className='dropdown' css={[outline,hover,css`padding:0.5rem 0;display:grid;outline:none;`]}>
-      <span css={css`margin:0;color:${theme.txt};display:flex;align-items:center;font-weight:bold;color:${theme.txtBright};`}>{workspaceScope}<svg css={css`margin:0.2rem 0 0 0.1rem;`} viewBox='0 0 24 24' width='15' height='15' stroke='currentColor' strokeWidth='3.5' fill='none' strokeLinecap='round' strokeLinejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg></span>
+      <span css={css`margin:0;color:${theme.txt};display:flex;align-items:center;font-weight:bold;color:${theme.txtBright};`}>{workspaceScope}<svg css={css`margin:0.1rem 0 0 0.2rem;`} viewBox='0 0 24 24' width='15' height='15' stroke='currentColor' strokeWidth='3.5' fill='none' strokeLinecap='round' strokeLinejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg></span>
       <span css={css`margin-left:1rem;font-size:0.9rem;display:flex;align-items:center;`}><svg css={css`margin-right:0.3rem;`} viewBox='0 0 24 24' width='10' height='10' stroke={`${theme.online}`} strokeWidth='3' fill={`${theme.online}`} strokeLinecap='round' strokeLinejoin='round'><circle cx='12' cy='12' r='10'></circle></svg>{user}</span>
     </div>
     <div className='popup' css={css`position:fixed;opacity:0;background-color:${theme.bgPopup};width:260px;border-radius:0.5rem;box-shadow:${theme.boxShadow};margin:-0.3rem 0 0 0.8rem;padding:0.5rem 0;z-index:-1;`}>
