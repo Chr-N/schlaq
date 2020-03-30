@@ -1,10 +1,13 @@
 const jwt = require('jsonwebtoken')
 
 createNewToken = (content) => {
+    require('dotenv').config()
+    const key = process.env.JWT_SECRET || "gangstahsecret"
+    console.log(key)
     return new Promise((resolve, reject) => {
         if(content) {
             if (typeof content == 'object') {
-                jwt.sign(JSON.stringify(content), process.env.JWT_SECRET, (error, result) => {
+                jwt.sign(content, key, (error, result) => {
                     if (error) {
                         reject(error)
                     } else {
@@ -21,9 +24,11 @@ createNewToken = (content) => {
 }
 
 verifyExistingToken = (token) => {
+    require('dotenv').config()
+    const key = process.env.JWT_SECRET || "gangstahsecret"
     return new Promise((resolve, reject) => {
         if(token) {
-            jwt.verify(token, process.env.JWT_SECRET, (error, result) => {
+            jwt.verify(token, key, (error, result) => {
                 if (error) {
                     reject(error)
                 } else {
