@@ -14,20 +14,18 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "primus": "^7.3.4",
-    "terser": "^4.6.8",
-    "twin.macro": "^1.0.0-alpha.8",
     "bcrypt": "^4.0.1",
-    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-react-views": "^0.11.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
+    "primus": "^7.3.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "styled-jsx": "^3.2.4"
+    "terser": "^4.6.8",
+    "twin.macro": "^1.0.0-alpha.8"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.0",
