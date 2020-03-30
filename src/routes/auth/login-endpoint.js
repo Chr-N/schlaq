@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const authUserRedirect = require('../modules/authentication').authedUserRedirect
-const createNewToken = require('../modules/json-web-token').createNewToken
-const loginUser = require('../modules/signup-and-login').loginUser
+const authUserRedirect = require('../../modules/authentication').authedUserRedirect
+const createNewToken = require('../../modules/json-web-token').createNewToken
+const loginUser = require('../../modules/signup-and-login').loginUser
 
 const milliSecondsPerDay = 86400000
 

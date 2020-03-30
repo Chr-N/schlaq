@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const authUserRedirect = require('../modules/authentication').authedUserRedirect
-const signUpUser = require('../modules/signup-and-login').signUpUser
+const authUserRedirect = require('../../modules/authentication').authedUserRedirect
+const signUpUser = require('../../modules/signup-and-login').signUpUser
 
 router.get('/', authUserRedirect, (req, res) => {
     res.send(`<!DOCTYPE html>
