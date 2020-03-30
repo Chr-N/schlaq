@@ -1,4 +1,5 @@
 exports.port = 5000
+exports.primusPort = 5001
 exports.viewsDir =  `${__dirname}/views`
 
 exports.engineOpts = {
