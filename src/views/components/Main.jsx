@@ -28,7 +28,7 @@ export default ({ scope, scopeStarred, messages }) => (
       )}
     </div>
     <div css={[/* outline, */css`display:grid;justify-items:center;align-items:flex-start;padding-top:0.5px;`]}>
-      <form css={css`width:96.5%;`}>
+      <form className='message-form' css={css`width:96.5%;`}>
         <input placeholder={`Message ${scope}`} css={[hoverOutline, focusInputOutline, css`width:100%;height:2.5rem;text-indent:1rem;border:none;box-shadow:${theme.boxShadowInput};background-color:${theme.bgInput};color:${theme.txtSec};outline:none;justify-self:center;align-self:center;border-radius:0.2rem;`]} />
       </form>
     </div>
