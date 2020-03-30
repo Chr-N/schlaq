@@ -10,7 +10,7 @@ export default {
   txtSec: 'rgb(171,171,173)',
   txtDim: 'rgb(145,145,147)',
 
-  online: 'rgb(43,172,118)',
+  online: 'rgb(57,229,0)',
   highlight: 'rgb(17,100,163)',
   link: 'rgb(17,100,163)',
   hover: 'rgba(255,255,255,0.1)',
