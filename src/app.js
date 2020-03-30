@@ -3,10 +3,17 @@ module.exports = () => {
     const reactViews = require('express-react-views')
     const { port, viewsDir, engineOpts, props } = require('./globals')
     const { messages } = require('./db/db')
+    const cookieParser = require('cookie-parser')
+    const bodyParser = require('body-parser');
     require('dotenv').config()
 
 
     const server = express()
+    
+    //server.use(express.json())
+    server.use(express.urlencoded({ extended: false }))
+    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(cookieParser());
 
     const loginRoute = require('./routes/login-endpoint')
     const signUpRoute = require('./routes/signup-endpoint')
