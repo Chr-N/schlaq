@@ -3,9 +3,13 @@ module.exports = () => {
     const reactViews = require('express-react-views')
     const { port, viewsDir, engineOpts, props } = require('./globals')
     const { messages } = require('./db/db')
+    require('dotenv').config()
+
 
     const server = express()
 
+    const loginRoute = require('./routes/login-endpoint')
+    const signUpRoute = require('./routes/signup-endpoint')
     const databaseRoute = require('./routes/sql-endpoints')
 
 
@@ -13,7 +17,8 @@ module.exports = () => {
     server.set( 'view engine', 'jsx' )
     server.engine( 'jsx', reactViews.createEngine( engineOpts ) )
 
-
+    server.use('/login', loginRoute)
+    server.use('/signup', signUpRoute)
     server.use('/database', databaseRoute)
 
 

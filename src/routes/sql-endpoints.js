@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require('../sql/mysql-interface')
 const resources = null //'../sql/resources' //load whatever resources from resources
 
+const hash = require('../modules/bcrypt').hashFunction
 
 const databaseName = "slack_clone"
 
@@ -60,10 +61,11 @@ router.get('/reset/resetToTestEnvironment', async (req, res, next) => {
         await db.createConnection()
         //takes path to directory of resources, do not enter filenames
         await db.resetDatabase(resources)
+        const password = await hash('password')
 
-        await db.createUser("timothy", "timothy@test.com", "some_hash")
-        await db.createUser("chris", "chris@admin.com", "some_hash")
-        await db.createUser("justin", "justin@admin.com", "some_hash")
+        await db.createUser("timothy", "timothy@test.com", password)
+        await db.createUser("chris", "chris@admin.com", password)
+        await db.createUser("justin", "justin@admin.com", password)
 
     } catch (error) {
         throw error
