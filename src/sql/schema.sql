@@ -13,7 +13,7 @@ CREATE TABLE users (
   id int PRIMARY KEY AUTO_INCREMENT,
   user_name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  password_hash varchar(255) NOT NULL,
   profile_picture_link VARCHAR(255),
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
@@ -72,12 +72,3 @@ CREATE TABLE apps (
   workspace_id int NOT NULL,
   FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
 );
-
---ALTER TABLE workspaces ADD FOREIGN KEY (user_id) REFERENCES users(id);
---ALTER TABLE channels ADD FOREIGN KEY (workspace_id) REFERENCES workspaces (workspace_id);
---ALTER TABLE posts ADD FOREIGN KEY (channel_id) REFERENCES channels (posts_id);
---ALTER TABLE comments ADD FOREIGN KEY (post_id) REFERENCES posts (posts_id);
---ALTER TABLE direct_messages ADD FOREIGN KEY (workspace_id) REFERENCES workspaces (workspace_id);
---ALTER TABLE apps ADD FOREIGN KEY (workspace_id) REFERENCES workspaces (workspace_id);
---ALTER TABLE posts ADD FOREIGN KEY (user_id) REFERENCES users (post_id);
---ALTER TABLE comments ADD FOREIGN KEY (user_id) REFERENCES users (comment_id);
