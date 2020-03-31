@@ -2,6 +2,8 @@ const { title } = require('../globals').props
 const { starred, dms } = require('../db/db')
 const starredArr = starred.map( ({ starred }) => starred )
 const db = require('../sql/mysql-interface')
+const authUserRedirect = require('../modules/authentication').authedUserRedirect
+const protectedRoute = require('../modules/authentication').protectedRoute
 
 exports.index = (req,res) => res.redirect('/FSWD/general')
 
@@ -57,6 +59,7 @@ exports.workspaceScope = async (req,res) => {
 
   const channelID = await getChannelID(req.params.scope)
 
+  //channelID may not exist*
   const posts = await db.getPosts( 'user_id, channel_id, post_text',
     `where channel_id = ${channelID}`
   )

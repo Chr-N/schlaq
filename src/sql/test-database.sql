@@ -21,6 +21,7 @@ CREATE TABLE users (
 CREATE TABLE workspaces (
   workspace_id int PRIMARY KEY AUTO_INCREMENT,
   workspace_name VARCHAR(255) NOT NULL,
+  workspace_pic_link VARCHAR(255),
   channel_id int NOT NULL
 );
 

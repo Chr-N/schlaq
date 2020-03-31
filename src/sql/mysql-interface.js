@@ -150,6 +150,7 @@ const dropAndRecreateTables = () => {
             return sqlCallback(`CREATE TABLE workspaces (
                 workspace_id int PRIMARY KEY AUTO_INCREMENT,
                 workspace_name VARCHAR(255) NOT NULL,
+                workspace_pic_link VARCHAR(255),
                 channel_id int NOT NULL
               )`)
         })
@@ -351,11 +352,11 @@ const getWorkspaces = (selectBy = '*', searchBy = '') => {
 }
 
 //channel_id should always be null to start 
-const createWorkspace = (workspace_name, channel_id = null) => {
+const createWorkspace = (workspace_name, workspace_pic_link, channel_id = null) => {
     return new Promise((resolve, reject) => {
         const table = 'workspaces'
-        const sql = `INSERT INTO ${table} (workspace_name, channel_id) VALUES (?, ?)`
-        const params = [workspace_name, channel_id]
+        const sql = `INSERT INTO ${table} (workspace_name, workspace_pic_link, channel_id) VALUES (?, ?, ?)`
+        const params = [workspace_name, workspace_pic_link, channel_id]
         db.query(sql, params, (error, result) => {
             if (error) {
                 console.log(`Problem creating workspace and inserting into ${table}.`)
