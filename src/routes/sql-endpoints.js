@@ -193,7 +193,7 @@ router.get('/getDirectMessages', async (req, res, next) => {
 
     try {
         await db.createConnection()
-        const result = "direct messages to be implemented" //await db.(selectBy, searchBy)
+        const result = await db.getDirectMessages(selectBy, searchBy)
         console.log(result)
         res.send(result)
     } catch (error) {
