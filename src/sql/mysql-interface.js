@@ -3,7 +3,7 @@
 const { dbHostAddress } = require('../globals')
 const mysql = require('mysql')
 
-const default_hostAddress = dbHostAddress //if you are Sam Meech-Ward, change this to "192.168.55.20"
+const default_hostAddress = dbHostAddress || "192.168.55.10"//if you are Sam Meech-Ward, change this to "192.168.55.20"
 const default_mySQLUser = "root"
 const default_mySQLPassword = "root"
 const default_databaseName = 'slack_clone'
@@ -150,6 +150,7 @@ const dropAndRecreateTables = () => {
             return sqlCallback(`CREATE TABLE workspaces (
                 workspace_id int PRIMARY KEY AUTO_INCREMENT,
                 workspace_name VARCHAR(255) NOT NULL,
+                workspace_pic_link VARCHAR(255),
                 channel_id int NOT NULL
               )`)
         })
@@ -190,8 +191,8 @@ const dropAndRecreateTables = () => {
             console.log(result.message)
             return sqlCallback(`CREATE TABLE comments (
                 comment_id int PRIMARY KEY AUTO_INCREMENT,
-                user_id int,
-                post_id int,
+                user_id int NOT NULL,
+                post_id int NOT NULL,
                 comment_text text,
                 comment_time timestamp NOT NULL DEFAULT NOW(),
                 FOREIGN KEY (post_id) REFERENCES posts(posts_id),
@@ -203,7 +204,13 @@ const dropAndRecreateTables = () => {
             return sqlCallback(`CREATE TABLE direct_messages (
                 direct_message_id int PRIMARY KEY AUTO_INCREMENT,
                 workspace_id int NOT NULL,
-                FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
+                receiver_id int NOT NULL,
+                sender_id int NOT NULL,
+                message_text VARCHAR(255),
+                created_at  timestamp NOT NULL DEFAULT NOW(),
+                FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id),
+                FOREIGN KEY (receiver_id) REFERENCES users(id),
+                FOREIGN KEY (sender_id) REFERENCES users(id)
               )`)
         })
         .then((result) => {
@@ -345,11 +352,11 @@ const getWorkspaces = (selectBy = '*', searchBy = '') => {
 }
 
 //channel_id should always be null to start 
-const createWorkspace = (workspace_name, channel_id = null) => {
+const createWorkspace = (workspace_name, workspace_pic_link, channel_id = null) => {
     return new Promise((resolve, reject) => {
         const table = 'workspaces'
-        const sql = `INSERT INTO ${table} (workspace_name, channel_id) VALUES (?, ?)`
-        const params = [workspace_name, channel_id]
+        const sql = `INSERT INTO ${table} (workspace_name, workspace_pic_link, channel_id) VALUES (?, ?, ?)`
+        const params = [workspace_name, workspace_pic_link, channel_id]
         db.query(sql, params, (error, result) => {
             if (error) {
                 console.log(`Problem creating workspace and inserting into ${table}.`)
@@ -510,11 +517,41 @@ const createComment = (user_id, post_id, comment_text) => {
     })
 }
 
-/**
- * direct messages
- */
 
- //to be implemented
+/**
+ * direct_messages
+ * 
+ */
+const getDirectMessages = (selectBy = '*', searchBy = '') => {
+    return new Promise((resolve, reject) => {
+        const table = 'direct_messages'
+        const sql = `SELECT ${selectBy} FROM ${table} ${searchBy}`
+        db.query(sql, (error, result) => {
+            if (error) {
+                console.log(`Problem searching for ${table} by ${searchBy}.`)
+                reject(error)
+            }
+            //console.log(rawDataPacketConverter(result))
+            resolve(rawDataPacketConverter(result))
+        })
+    }) 
+}
+
+const createDirectMessage = (workspace_id, receiver_id, sender_id, message_text) => {
+    return new Promise((resolve, reject) => {
+        const table = 'direct_messages'
+        const sql = `INSERT INTO ${table} (workspace_id, receiver_id, sender_id, message_text) VALUES (?, ?, ?, ?)`
+        const params = [workspace_id, receiver_id, sender_id, message_text]
+        db.query(sql, params, (error, result) => {
+            if (error) {
+                console.log(`Problem creating direct message and inserting into ${table}.`)
+                reject(error)
+            }
+            console.log(result)
+            resolve(rawDataPacketConverter(result))
+        })
+    })
+}
 
 
 
@@ -554,5 +591,7 @@ module.exports = {
     getPosts,
     createPost,
     getComments,
-    createComment
+    createComment,
+    getDirectMessages,
+    createDirectMessage
 }
