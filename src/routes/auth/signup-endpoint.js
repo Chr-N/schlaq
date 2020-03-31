@@ -1,10 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const authUserRedirect = require('../modules/authentication').authedUserRedirect
-const createNewToken = require('../modules/json-web-token').createNewToken
-const loginUser = require('../modules/signup-and-login').loginUser
-
-const milliSecondsPerDay = 86400000
+const authUserRedirect = require('../../modules/authentication').authedUserRedirect
+const signUpUser = require('../../modules/signup-and-login').signUpUser
 
 router.get('/', authUserRedirect, (req, res) => {
     res.send(`<!DOCTYPE html>
@@ -42,30 +39,24 @@ router.get('/', authUserRedirect, (req, res) => {
     </body>
     
     </html>`)
-    //res.render('login page')
+    //res.render('signup-page')
 })
 
-router.post('/', (req, res) => {
-    console.log(req.body)
+router.post('/', authUserRedirect, async (req, res) => {
+    const userName = req.body.userName
     const email = req.body.email
     const password = req.body.password
-    if(email && password) {
-        loginUser(email, password)
-            .then((user) => {
-                return createNewToken({...user})
-            })
-            .then((token) => {
-                res.cookie('token', token, { maxAge: milliSecondsPerDay })
-            })
-            .then(() => {
-                res.redirect('/')
-            })
-            .catch((error) => {
-                console.log(error)
-                res.send(error)
-            })
+    const profilePictureLink = req.body.profilePictureLink
+    
+    if(userName && email && password) {
+        if(profilePictureLink) {
+            await signUpUser(userName, email, password, profilePictureLink)
+        } else {
+            await signUpUser(userName, email, password)
+        }
+        res.redirect('/')
     } else {
-        res.redirect('/login')
+        res.send("Error!")
     }
 })
 

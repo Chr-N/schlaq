@@ -1,4 +1,5 @@
 exports.port = 5000
+exports.primusPort = 5001
 exports.viewsDir =  `${__dirname}/views`
 
 exports.engineOpts = {
@@ -14,13 +15,25 @@ exports.engineOpts = {
         '@babel/preset-react', {
           useSpread: true
         }
+      ],
+      [
+        '@emotion/babel-preset-css-prop', {
+          sourceMap: false,
+          autoLabel: false,
+          cssPropOptimization: true
+        }
       ]
-    ],
-    plugins: [ [ 'styled-jsx/babel', { optimizeForSpeed: true } ] ]
+    ]/* ,
+    plugins: [
+      'babel-plugin-macros',
+      // '@babel/plugin-transform-react-jsx',
+      // [ 'babel-plugin-inline-import', { extensions: ['.css'] } ]
+    ] */
   }
 }
 
 exports.props = {
-  title: 'Schlaq',
-  msg: 'the quick brown fox jumped over the lazy dog'
+  title: 'Schlaq'
 }
+
+exports.dbHostAddress = process.env.DBHOST

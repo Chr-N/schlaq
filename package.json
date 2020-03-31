@@ -3,24 +3,39 @@
   "version": "0.1.0",
   "main": "src/server.js",
   "scripts": {
-    "dev": "node-dev src/server.js"
+    "dev": "env DBHOST=localhost node-dev src/server.js",
+    "start": "env DBHOST=192.168.55.10 node-dev src/server.js"
+  },
+  "babelMacros": {
+    "twin": {
+      "styled": "@emotion/styled",
+      "format": "auto"
+    }
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "bcrypt": "^4.0.1",
-    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-react-views": "^0.11.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "styled-jsx": "^3.2.4"
+    "primus": "^7.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "terser": "^4.6.8",
+    "twin.macro": "^1.0.0-alpha.8"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
-    "node-dev": "^4.0.0"
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/css": "^10.0.27",
+    "babel-plugin-inline-import": "^3.0.0",
+    "babel-plugin-macros": "^2.8.0",
+    "node-dev": "^4.0.0",
+    "ws": "^7.2.3"
   }
 }

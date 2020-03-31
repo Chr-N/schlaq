@@ -1,10 +1,9 @@
 # Schlaq | Team 🦔
-Schlack is better than Slack
+Schlaq is better than Slack.
 
 ## Instructions
 1. `npm install` to install dependencies
-2. `npm run dev` to start the server
-3. Open [localhost:5000](http://localhost:5000) in your browser
-
-## Extensions
-Install the [styled-jsx Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=blanu.vscode-styled-jsx) and [styled-jsx Autocomplete](https://marketplace.visualstudio.com/items?itemName=AndrewRazumovsky.vscode-styled-jsx-languageserver) extensions for vscode
+2. Start a MySQL server at port `3306`
+3. `source schema.sql` in MySQL
+4. `npm run dev` to start the server
+5. Open [localhost:5000/login](http://localhost:5000/login) in your browser

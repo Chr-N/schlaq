@@ -1,8 +1,9 @@
 //BIG CAVEAT - node mysql module only works with legacy mysql... does not support SHA2 passwords, so the mysql with node.js is currently unsecure.
 
+const { dbHostAddress } = require('../globals')
 const mysql = require('mysql')
 
-const default_hostAddress = "192.168.55.10" //if you are Sam Meech-Ward, change this to "192.168.55.20"
+const default_hostAddress = dbHostAddress //if you are Sam Meech-Ward, change this to "192.168.55.20"
 const default_mySQLUser = "root"
 const default_mySQLPassword = "root"
 const default_databaseName = 'slack_clone'
@@ -52,7 +53,7 @@ const createConnection = (hostAddress = default_hostAddress, port = default_port
 
 const closeConnection = () => {
     db.end()
-    console.log("connection closed")
+    // console.log("db connection closed")
 }
 
 /**

@@ -1,14 +1,21 @@
-exports.messages = [
-  {
-    id: "1",
-    content: "This is a message",
-    username: "sam",
-    avatarImage: "https://cdn.discordapp.com/attachments/620095242728636416/681630720581828612/unknown.png"
-  }
+exports.starred = [
+  { starred: 'Bob', type: 'user' },
+  { starred: 'Tom', type: 'user' },
+  { starred: 'questions', type: 'channel' }
 ]
 
-exports.getMessages = (callback) => {
-  setTimeout(() => {
-    callback(null, messages)
-  }, 0)
-}
+exports.dms = [
+  { dm: 'Bob' },
+  { dm: 'David' },
+  { dm: 'Sarah' },
+  { dm: 'Tessa' },
+  { dm: 'Carey' },
+  { dm: 'Tim' },
+  { dm: 'Tom' },
+  { dm: 'Jake' },
+  { dm: 'Bill' },
+  { dm: 'Dave' }
+]
+
+// tim@tim.com tim
+// alter user 'root'@'%' identified with mysql_native_password by 'root'
