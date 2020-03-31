@@ -3,7 +3,7 @@
 const { dbHostAddress } = require('../globals')
 const mysql = require('mysql')
 
-const default_hostAddress = dbHostAddress //if you are Sam Meech-Ward, change this to "192.168.55.20"
+const default_hostAddress = dbHostAddress || "192.168.55.10"//if you are Sam Meech-Ward, change this to "192.168.55.20"
 const default_mySQLUser = "root"
 const default_mySQLPassword = "root"
 const default_databaseName = 'slack_clone'

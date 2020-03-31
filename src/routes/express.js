@@ -6,10 +6,12 @@ const db = require('../sql/mysql-interface')
 exports.index = (req,res) => res.redirect('/FSWD/general')
 
 exports.workspaceScope = async (req,res) => {
-  const [ ,payload ] = req.cookies.token.split('.')
-  const { user_name: user } = JSON.parse(`${Buffer.from( payload, 'base64' )}`)
+  if (req.cookies && req.cookies.token) {
+    const [ ,payload ] = req.cookies.token.split('.')
+    const { user_name: user } = JSON.parse(`${Buffer.from( payload, 'base64' )}`)
+  
 
-  await db.createConnection()
+    await db.createConnection()
 
   const userID = (await db.getUsers( 'id',
     `where user_name = '${user}'`
@@ -90,4 +92,9 @@ exports.workspaceScope = async (req,res) => {
     scopeStarred: starredArr.includes( req.params.scope ),
     primusLib: res.app.locals.primusLib
   })
+  
+  
+  
+  
+  }
 }
