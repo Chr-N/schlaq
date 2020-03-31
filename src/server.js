@@ -42,6 +42,23 @@ server.get( '/', authUserRedirect, expressRoutes.index )
 server.get( '/:workspace/:scope', protectedRoute, expressRoutes.workspaceScope )
 server.listen( port, () => console.log( `\nServer is live at http://localhost:${port}` ) )
 
-primus.on( 'connection', primusRoutes.connection )
+const broadcast = ({ profilePic, username, message }) => primus.write({ profilePic, username, message })
+
+primus.on( 'connection', /* primusRoutes.connection */ (spark) => {
+  console.log(`${spark.address.ip} connected`)
+  console.log( spark.query.locals )
+
+  const [ ,payload ] = spark.request.headers.cookie.split('.')
+  const {
+    user_name: username,
+    profile_picture_link: profilePic
+  } = JSON.parse( Buffer.from( payload, 'base64' ) )
+
+  spark.on( 'data', (message) => {
+    console.log( `client ${username}:`, message )
+    // spark.write({ profilePic, username, message })
+    broadcast({ profilePic, username, message })
+  })
+} )
 primus.on( 'disconnection', primusRoutes.disconnection )
 httpServer.listen( primusPort, () => console.log( `Primus is live at http://localhost:${primusPort}` ) )
