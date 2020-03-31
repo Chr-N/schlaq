@@ -11,7 +11,7 @@ dependencies:
   primus: 7.3.4
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
-  terser: 4.6.8
+  terser: 4.6.10
   twin.macro: 1.0.0-alpha.8
 devDependencies:
   '@babel/preset-env': 7.9.0
@@ -3927,7 +3927,7 @@ packages:
       node: '>=4.5'
     resolution:
       integrity: sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA==
-  /terser/4.6.8:
+  /terser/4.6.10:
     dependencies:
       commander: 2.20.3
       source-map: 0.6.1
@@ -3937,7 +3937,7 @@ packages:
       node: '>=6.0.0'
     hasBin: true
     resolution:
-      integrity: sha512-drV7ga6ZlIpBtitvb87Uk7P7gAJkCt3j/TqZr9wwF4Dlt0MBn52ANIAyuvP1F605WdPY4w6vT63u6KTWqaXFRQ==
+      integrity: sha512-qbF/3UOo11Hggsbsqm2hPa6+L4w7bkr+09FNseEe8xrcVD3APGLFqE+Oz1ZKAxjYnFsj80rLOfgAtJ0LNJjtTA==
   /text-hex/1.0.0:
     dev: false
     resolution:
@@ -4129,6 +4129,6 @@ specifiers:
   primus: ^7.3.4
   react: ^16.13.1
   react-dom: ^16.13.1
-  terser: ^4.6.8
+  terser: ^4.6.10
   twin.macro: ^1.0.0-alpha.8
   ws: ^7.2.3

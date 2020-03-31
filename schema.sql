@@ -85,9 +85,14 @@ INSERT INTO users ( user_name, email, password_hash, profile_picture_link ) VALU
     'bob@bob.com',
     '$2b$12$Qyr91yvPWQeQb/7hF96u8etWQ0sNiKrLfhhh64lTOGrIRZcL0fpy2',
     'https://ca.slack-edge.com/TMLRSLD7V-UMZ756VT2-g6e2fc16ae63-512'
+  ),
+  (
+    'Sam',
+    'sam@sam.com',
+    '$2b$12$wiz/tWqqTvOzafdvLXzcs.GT2T54ckkQXLt3sFJx6SwnCf/5rxuka',
+    'https://ca.slack-edge.com/TMLRSLD7V-UMSRE05LZ-g9eca382a0c2-512'
   )
   ;
-
 
 INSERT INTO workspaces ( workspace_name, workspace_pic_link, channel_id ) VALUES
   ( 'FSWD', 'https://a.slack-edge.com/80588/img/avatars-teams/ava_0015-44.png', 1 ),
@@ -98,7 +103,11 @@ INSERT INTO workspaces ( workspace_name, workspace_pic_link, channel_id ) VALUES
 INSERT INTO user_workspaces ( user_id, workspace_id ) VALUES
   ( 1, 1 ),
   ( 1, 2 ),
-  ( 1, 3 )
+  ( 1, 3 ),
+  ( 2, 1 ),
+  ( 2, 3 ),
+  ( 3, 1 ),
+  ( 3, 3 )
   ;
 
 INSERT INTO channels ( channel_name, workspace_id, posts_id ) VALUES
@@ -158,6 +167,6 @@ INSERT INTO posts ( user_id, channel_id, post_text ) VALUES
   ( 1, 7, 'Aliquet bibendum enim facilisis gravida neque. Imperdiet massa tincidunt nunc pulvinar. Scelerisque felis imperdiet proin fermentum leo. Porta lorem mollis aliquam ut porttitor leo. Tellus in hac habitasse platea dictumst. Volutpat sed cras ornare arcu dui vivamus. Sed arcu non odio euismod. Morbi tincidunt ornare massa eget egestas purus viverra accumsan. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Quis viverra nibh cras pulvinar mattis nunc sed blandit. Eu facilisis sed odio morbi quis commodo. Diam volutpat commodo sed egestas egestas.' )
   ;
 
-INSERT INTO direct_messages ( workspace_id ) VALUES
-  ( 1 )
+INSERT INTO direct_messages ( workspace_id, receiver_id, sender_id, message_text ) VALUES
+  ( 1, 1, 1, 'the quick brown fox jumped over the lazy dog' )
   ;

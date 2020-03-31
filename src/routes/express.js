@@ -1,4 +1,5 @@
 const { title } = require('../globals').props
+const { dbHostAddress } = require('../globals')
 const { starred, dms } = require('../db/db')
 const starredArr = starred.map( ({ starred }) => starred )
 const db = require('../sql/mysql-interface')
@@ -93,7 +94,8 @@ exports.workspaceScope = async (req,res) => {
     messages,
     scope: req.params.scope,
     scopeStarred: starredArr.includes( req.params.scope ),
-    primusLib: res.app.locals.primusLib
+    primusLib: res.app.locals.primusLib,
+    dbHostAddress
   })
   
   

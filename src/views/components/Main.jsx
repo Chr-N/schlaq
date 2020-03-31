@@ -18,9 +18,9 @@ export default ({ scope, scopeStarred, messages }) => (
         }
       </div>
     </div>
-    <div css={[scrollbar,css`display:flex;flex-direction:column-reverse;overflow-y:overlay;`]}>
+    <div className='messages-scope' css={[scrollbar,css`display:flex;flex-direction:column-reverse;overflow-y:overlay;`]}>
       {messages[scope] && messages[scope].map(({profilePic, username, message},i) =>
-        <div css={[hoverMessage, css`display:grid;grid-template-columns:2.8rem 1fr;grid-template-rows:1fr max-content;grid-template-areas:'profile-pic username' 'profile-pic message';padding:1rem 1.5rem;`]} key={i} >
+        <div className='message-elem' css={[hoverMessage, css`display:grid;grid-template-columns:2.8rem 1fr;grid-template-rows:1fr max-content;grid-template-areas:'profile-pic username' 'profile-pic message';padding:1rem 1.5rem;`]} key={i} >
           <img css={css`grid-area:profile-pic;border-radius:0.2rem;`} src={profilePic} />
           <div css={css`grid-area:username;text-indent:1rem;font-weight:bold;`}>{username}</div>
           <div css={css`grid-area:message;padding-left:1rem;font-size:0.95rem;width:100%;`}>{message}</div>
