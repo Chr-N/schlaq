@@ -1,9 +1,15 @@
 exports.connection = (spark) => {
   console.log(`${spark.address.ip} connected`)
 
-  spark.on( 'data', (data) => {
-    console.log( 'client:', data )
-    spark.write( data )
+  const [ ,payload ] = spark.request.headers.cookie.split('.')
+  const {
+    user_name: username,
+    profile_picture_link: profilePic
+  } = JSON.parse( Buffer.from( payload, 'base64' ) )
+
+  spark.on( 'data', (message) => {
+    console.log( `client ${username}:`, message )
+    spark.write({ profilePic, username, message })
   })
 }
 
