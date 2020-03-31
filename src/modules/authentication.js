@@ -1,5 +1,7 @@
 const verify = require('./json-web-token').verifyExistingToken
 
+const authedUserRedirectDefaultPage = '/FSWD/general'
+
 const protectedRoute = (req, res, next) => {
     //if token exists
     if(req.cookies && req.cookies.token) {
@@ -25,7 +27,7 @@ const authedUserRedirect = (req, res, next) => {
         verify(req.cookies.token)
             .then((user) => {
                 console.log(user)
-                res.redirect('/')
+                res.redirect(authedUserRedirectDefaultPage)
             })
             //if error, log error and do nothing
             .catch((error) => {

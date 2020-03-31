@@ -47,8 +47,8 @@ CREATE TABLE posts (
 
 CREATE TABLE comments (
   comment_id int PRIMARY KEY AUTO_INCREMENT,
-  user_id int,
-  post_id int,
+  user_id int NOT NULL,
+  post_id int NOT NULL,
   comment_text text,
   comment_time timestamp NOT NULL DEFAULT NOW(),
   FOREIGN KEY (post_id) REFERENCES posts(posts_id),
@@ -58,7 +58,13 @@ CREATE TABLE comments (
 CREATE TABLE direct_messages (
   direct_message_id int PRIMARY KEY AUTO_INCREMENT,
   workspace_id int NOT NULL,
-  FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id)
+  receiver_id int NOT NULL,
+  sender_id int NOT NULL,
+  message_text VARCHAR(255),
+  created_at  timestamp NOT NULL DEFAULT NOW(),
+  FOREIGN KEY (workspace_id) REFERENCES workspaces(workspace_id),
+  FOREIGN KEY (receiver_id) REFERENCES users(id),
+  FOREIGN KEY (sender_id) REFERENCES users(id)
 );
 
 CREATE TABLE apps (

@@ -2,14 +2,18 @@ const { title } = require('../globals').props
 const { starred, dms } = require('../db/db')
 const starredArr = starred.map( ({ starred }) => starred )
 const db = require('../sql/mysql-interface')
+const authUserRedirect = require('../modules/authentication').authedUserRedirect
+const protectedRoute = require('../modules/authentication').protectedRoute
 
 exports.index = (req,res) => res.redirect('/FSWD/general')
 
 exports.workspaceScope = async (req,res) => {
-  const [ ,payload ] = req.cookies.token.split('.')
-  const { user_name: user } = JSON.parse(`${Buffer.from( payload, 'base64' )}`)
+  if (req.cookies && req.cookies.token) {
+    const [ ,payload ] = req.cookies.token.split('.')
+    const { user_name: user } = JSON.parse(`${Buffer.from( payload, 'base64' )}`)
+  
 
-  await db.createConnection()
+    await db.createConnection()
 
   const userID = (await db.getUsers( 'id',
     `where user_name = '${user}'`
@@ -55,6 +59,7 @@ exports.workspaceScope = async (req,res) => {
 
   const channelID = await getChannelID(req.params.scope)
 
+  //channelID may not exist*
   const posts = await db.getPosts( 'user_id, channel_id, post_text',
     `where channel_id = ${channelID}`
   )
@@ -90,4 +95,9 @@ exports.workspaceScope = async (req,res) => {
     scopeStarred: starredArr.includes( req.params.scope ),
     primusLib: res.app.locals.primusLib
   })
+  
+  
+  
+  
+  }
 }

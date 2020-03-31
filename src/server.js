@@ -1,6 +1,8 @@
 const express = require('express')
 const reactViews = require('express-react-views')
 const cookieParser = require('cookie-parser')
+const authUserRedirect = require('./modules/authentication').authedUserRedirect
+const protectedRoute = require('./modules/authentication').protectedRoute
 require('dotenv').config()
 
 const http = require('http')
@@ -36,8 +38,8 @@ server.use( '/login', loginRoute )
 server.use( '/signup', signUpRoute )
 server.use( '/db', dbRoute )
 
-server.get( '/', expressRoutes.index )
-server.get( '/:workspace/:scope', expressRoutes.workspaceScope )
+server.get( '/', authUserRedirect, expressRoutes.index )
+server.get( '/:workspace/:scope', protectedRoute, expressRoutes.workspaceScope )
 server.listen( port, () => console.log( `\nServer is live at http://localhost:${port}` ) )
 
 primus.on( 'connection', primusRoutes.connection )
