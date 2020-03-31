@@ -3,7 +3,7 @@ const { starred, dms } = require('../db/db')
 const starredArr = starred.map( ({ starred }) => starred )
 const db = require('../sql/mysql-interface')
 
-exports.index = (req,res) => res.redirect('/login')
+exports.index = (req,res) => res.redirect('/FSWD/general')
 
 exports.workspaceScope = async (req,res) => {
   const [ ,payload ] = req.cookies.token.split('.')
