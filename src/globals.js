@@ -35,3 +35,5 @@ exports.engineOpts = {
 exports.props = {
   title: 'Schlaq'
 }
+
+exports.dbHostAddress = process.env.DBHOST
