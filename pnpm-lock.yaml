@@ -17,6 +17,7 @@ devDependencies:
   '@babel/preset-env': 7.9.0
   '@babel/preset-react': 7.9.4
   '@emotion/babel-preset-css-prop': 10.0.27
+  '@emotion/css': 10.0.27
   babel-plugin-inline-import: 3.0.0
   babel-plugin-macros: 2.8.0
   node-dev: 4.0.0
@@ -1589,7 +1590,6 @@ packages:
       '@emotion/serialize': 0.11.16
       '@emotion/utils': 0.11.3
       babel-plugin-emotion: 10.0.29
-    dev: false
     resolution:
       integrity: sha512-6wZjsvYeBhyZQYNrGoR5yPMYbMBNEnanDrqmsqS1mzDm1cOTu12shvl2j4QHNS36UaTE0USIJawCH9C8oW34Zw==
   /@emotion/hash/0.8.0:
@@ -4114,6 +4114,7 @@ specifiers:
   '@babel/preset-react': ^7.9.4
   '@emotion/babel-preset-css-prop': ^10.0.27
   '@emotion/core': ^10.0.28
+  '@emotion/css': ^10.0.27
   '@emotion/styled': ^10.0.27
   babel-plugin-inline-import: ^3.0.0
   babel-plugin-macros: ^2.8.0
