@@ -36,6 +36,6 @@
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-macros": "^2.8.0",
     "node-dev": "^4.0.0",
-    "ws": "^7.2.3"
+    "ws": "^7.4.6"
   }
 }
